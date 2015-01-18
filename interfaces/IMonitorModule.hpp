@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_gkrellm.hpp>
 
 #ifndef IMONITORMODULE_HPP
 # define IMONITORMODULE_HPP
+
+typedef std::map<std::string, std::string> map2s;
 
 class IMonitorModule
 {

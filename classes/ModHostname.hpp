@@ -1,7 +1,6 @@
 #ifndef MODHOSTNAME_HPP
 # define MODHOSTNAME_HPP
 
-#include <ft_gkrellm.hpp>
 #include "AMonitorModule.hpp"
 
 class ModHostname : public AMonitorModule {
@@ -11,6 +10,7 @@ class ModHostname : public AMonitorModule {
 
 	public:
 		ModHostname(void);
+		void				refresh(void);
 		~ModHostname(void);
 };
 
