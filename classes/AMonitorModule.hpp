@@ -4,8 +4,8 @@
 #include "IMonitorModule.hpp"
 
 class AMonitorModule : public IMonitorModule {
-	private:
-		std::string const			_name;
+	protected:
+		std::string					_name;
 		map2s						_map;
 
 	public:

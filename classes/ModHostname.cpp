@@ -1,11 +1,15 @@
 
 #include "ModHostname.hpp"
+#include <unistd.h>
 
 ModHostname::ModHostname(void) {
-	std::cout << "m\n";
+	AMonitorModule::_name = "Hostname/Login";
+	this->refresh();
 }
 
-void ModHostname::refresh(){}
+void ModHostname::refresh(){
+	AMonitorModule::_map["Login"] = getlogin();
+}
 
 ModHostname::~ModHostname() {
 }

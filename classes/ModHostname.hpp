@@ -7,11 +7,13 @@ class ModHostname : public AMonitorModule {
 	private:
 		ModHostname(ModHostname const &);
 		ModHostname &	operator=(ModHostname const &);
+		char *			_hostNamePtr;
 
 	public:
-		ModHostname(void);
-		void				refresh(void);
-		~ModHostname(void);
+		ModHostname( void );
+		~ModHostname( void );
+
+		void				refresh( void );
 };
 
 #endif
