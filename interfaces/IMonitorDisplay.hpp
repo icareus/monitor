@@ -13,9 +13,12 @@
 #ifndef IMONITORDISPLAY_HPP
 # define IMONITORDISPLAY_HPP
 
+# include <curses.h>
 # include <string>
 # include <list>
+
 # include "ModHostname.hpp"
+# include "ModOS.hpp"
 
 class IMonitorDisplay
 {
