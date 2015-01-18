@@ -8,11 +8,12 @@ ModHostname::ModHostname(void) {
 }
 
 void ModHostname::refresh(){
-	char	hostname[256];
-	gethostname(hostname, sizeof hostname);
+	char	buff[256];
 
-	AMonitorModule::_map["Login"] = getlogin();
-	AMonitorModule::_map["Hostname"] = hostname;
+	gethostname(buff, sizeof buff);
+	AMonitorModule::_map["Hostname"] = buff;
+	getlogin_r(buff, sizeof buff);
+	AMonitorModule::_map["Login"] = buff;
 }
 
 ModHostname::~ModHostname() {
