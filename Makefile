@@ -3,73 +3,80 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abarbaro <abarbaro@student.42.fr>          +#+  +:+       +#+         #
+#    By: bhivert <bhivert@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2013/11/30 05:29:40 by abarbaro          #+#    #+#              #
-#    Updated: 2015/01/05 22:15:56 by abarbaro         ###   ########.fr        #
+#    Created: 2015/01/01 16:50:57 by bhivert           #+#    #+#              #
+#    Updated: 2015/01/01 16:50:57 by bhivert          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+.PHONY: all, clean, fclean, re, _mkdir, _make, _make_clean, _make_fclean
+.SUFFIXES:
 
-CC = g++
-CFLAGS = -Wall -Werror -Wextra
-NAME = ft_gkrellm
-SRCDIR = ./src/
-IDIR = ./includes/
-SRCFIL = $(shell ls $(SRCDIR) | grep "\.cpp")
-SRC = $(addprefix $(SRCDIR),$(SRCFIL))
-ODIR = ./OBJECTS/
-SRCO = $(SRCFIL:.cpp=.o)
-BLU = tput setaf 4
-GRN = tput setaf 2
-WHT = tput setaf 7
-NOCOLOR = tput sgr 0
+NAME		=	ft_gkrellm
 
-all: $(NAME)
+DEBUG		=	0
+ifeq ($(DEBUG), 0)
+	CC	=	g++
+	CFLAGS	=	-Wall -Wextra $(INCS_FLAGS) -O3
+else
+	CC	=	g++
+	CFLAGS	=	-Wall -Wextra -Werror $(INCS_FLAGS) -g3
+endif
 
-$(NAME): $(ODIR)
-	@$(BLU)
-	@echo "Making $(NAME)..."
-	@$(CC) $(addprefix $(ODIR),$(SRCO)) -o $(NAME)
-	@$(WHT)
-	@echo "$(NAME) done."
-	@$(NOCOLOR)
+DEPENDS		=	
 
-$(ODIR):
-	@$(BLU)
-	@echo "Making objects..."
-	@$(CC) $(CFLAGS) -c $(SRC) -I $(IDIR)
-	@mkdir -p $(ODIR)
-	@mv $(SRCO) $(ODIR)
-	@$(WHT)
-	@echo "objects done."
-	@$(NOCOLOR)
+LIBS_DIR	=	
+LIBS		=	
 
-$(LIB):
-	@$(BLU)
-	@echo "Building dependencies..."
-	@make -C $(LIBDIR)
-	@$(WHT)
-	@echo "Dependencies done."
-	@$(NOCOLOR)
+INCS_FLAGS	=	-Iinterfaces \
+			-Iincludes \
+			-Iclasses \
 
-re: fclean all
-	@$(GRN)
-	@echo "Project reset and rebuilt."
-	@$(NOCOLOR)
+SUB_MAKE	=	
 
-clean:
-	@$(BLU)
-	@echo "Cleaning objects..."
-	rm -rf $(ODIR)
-	@$(WHT)
-	@echo "Cleaning done."
-	@$(NOCOLOR)
+CLASSES_DIR	=	classes
+CLASSES_SRCS	=
 
-fclean: clean
-	@$(BLU)
-	@echo "Deleting output..."
-	rm -f $(NAME)
-	@$(WHT)
-	@echo "Deletion done."
-	@$(NOCOLOR)
+SRC_DIR	=	src
+SRC_SRCS	=	$(SRC_DIR)/AMonitorModule.cpp \
+			$(SRC_DIR)/main.cpp \
 
+SRCS		=	$(CLASSES_SRCS) \
+			$(SRC_SRCS) \
+
+OBJS_DIR	=	objs
+OBJS		=	$(foreach SRC, $(SRCS), $(OBJS_DIR)/$(notdir $(SRC:.cpp=.o)))
+
+VPATH		=	$(foreach SRC, $(SRCS), $(dir $(SRC)))
+
+all		:	_mkdir $(NAME)
+
+$(NAME)		:	$(OBJS)
+	$(CC) $(CFLAGS) $^ -o $@ $(LIBS_DIR) $(LIBS)
+
+$(OBJS_DIR)/%.o	:	%.cpp $(DEPENDS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean		:	_make_clean
+	rm -rf $(OBJS_DIR)
+
+fclean		:	_make_fclean clean
+	rm -rf $(NAME)
+
+re			:	fclean all
+
+_mkdir		:
+	@mkdir -p $(OBJS_DIR)
+
+_make		:
+ifeq ($(DEBUG), 2)
+	$(foreach MAKE, $(SUB_MAKE),make -C $(MAKE) DEBUG=$(DEBUG);)
+else
+	$(foreach MAKE, $(SUB_MAKE),make -C $(MAKE);)
+endif
+
+_make_clean		:
+	$(foreach MAKE, $(SUB_MAKE),make -C $(MAKE) clean;)
+
+_make_fclean		:
+	$(foreach MAKE, $(SUB_MAKE),make -C $(MAKE) fclean;)

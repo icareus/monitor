@@ -17,14 +17,14 @@
 
 class IMonitorModule
 {
-public:
-	virtual ~IMonitorModule();
+	public:
+		virtual ~IMonitorModule();
 
-	virtual void		start() = 0;
-	virtual void		refresh() = 0;
-	virtual void		stop() = 0;
-	virtual std::string	getName() = 0;
-	virtual map2s &		getData() = 0;
+		virtual void				start() = 0;
+		virtual void				refresh() = 0;
+		virtual void				stop() const = 0;
+		virtual std::string const &	getName() const = 0;
+		virtual map2s const &		getData() const = 0;
 };
 
 std::ostream & operator << (std::ostream & out, IMonitorModule IM);
