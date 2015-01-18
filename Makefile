@@ -35,11 +35,11 @@ INCS_FLAGS	=	-Iinterfaces \
 SUB_MAKE	=	
 
 CLASSES_DIR	=	classes
-CLASSES_SRCS	=
+CLASSES_SRCS	=	$(CLASSES_DIR)/AMonitorModule.cpp \
+			$(CLASSES_DIR)/ModHostname.cpp \
 
 SRC_DIR	=	src
-SRC_SRCS	=	$(SRC_DIR)/AMonitorModule.cpp \
-			$(SRC_DIR)/main.cpp \
+SRC_SRCS	=	$(SRC_DIR)/main.cpp \
 
 SRCS		=	$(CLASSES_SRCS) \
 			$(SRC_SRCS) \
