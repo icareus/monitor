@@ -13,16 +13,14 @@
 #ifndef IMONITORDISPLAY_HPP
 # define IMONITORDISPLAY_HPP
 
+# include <string>
+# include <list>
+# include "ModHostname.hpp"
+
 class IMonitorDisplay
 {
 	public:
-		virtual ~IMonitorDisplay();
 
-		virtual void		clear() = 0;
-		virtual void		close() = 0;
-		virtual void		addModule() = 0;
-		virtual std::string	listModules() = 0;
-		virtual void		delModule() = 0;
 };
 
 #endif

@@ -19,7 +19,7 @@ ifeq ($(DEBUG), 0)
 	CC	=	g++
 	CFLAGS	=	-Wall -Wextra $(INCS_FLAGS) -O3
 else
-	CC	=	clang
+	CC	=	g++
 	CFLAGS	=	-Wall -Wextra -Werror $(INCS_FLAGS) -g3
 endif
 
@@ -37,6 +37,7 @@ SUB_MAKE	=
 CLASSES_DIR	=	classes
 CLASSES_SRCS	=	$(CLASSES_DIR)/AMonitorModule.cpp \
 			$(CLASSES_DIR)/ModHostname.cpp \
+			$(CLASSES_DIR)/MonitorDisplay.cpp \
 
 SRC_DIR	=	src
 SRC_SRCS	=	$(SRC_DIR)/main.cpp \
