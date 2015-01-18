@@ -21,7 +21,7 @@ typedef std::map<std::string, std::string> map2s;
 
 std::ostream & operator << (std::ostream & out, const map2s & map);
 
-class IMonitorModule {};
-class IMonitorDisplay {};
+class AMonitorModule;
+class AMonitorDisplay;
 
 # endif

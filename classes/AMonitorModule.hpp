@@ -18,7 +18,7 @@ class AMonitorModule : public IMonitorModule {
 
 	public:
 		AMonitorModule(void);
-		virtual						~IMonitorModule(void);
+		virtual						~AMonitorModule(void);
 };
 
 #endif

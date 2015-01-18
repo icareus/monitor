@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include <ft_gkrellm.hpp>
-#include "IMonitorModule.hpp"
-#include "AMonitorModule.hpp"
 
 std::ostream & operator << (std::ostream & out, map2s & m) {
 	for (map2s::iterator i = m.begin(); i != m.end(); i++) {
