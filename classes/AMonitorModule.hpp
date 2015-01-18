@@ -7,18 +7,18 @@
 class AMonitorModule : public IMonitorModule {
 	private:
 		std::string const			_name;
-		map2s						_map(void);
+		map2s						_map;
 
 	protected:
-		virtual	void				start(void);
+		void				start(void);
 		virtual void				refresh(void);
-		virtual void				stop(void) const;
-		virtual std::string const &	getName() const;
-		virtual map2s const &		getData() const;
+		void				stop(void);
+		std::string const &	getName() const;
+		map2s const &		getData() const;
 
 	public:
 		AMonitorModule(void);
-		virtual						~AMonitorModule(void);
+		~AMonitorModule(void);
 };
 
 #endif

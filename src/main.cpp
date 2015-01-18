@@ -11,17 +11,16 @@
 /* ************************************************************************** */
 
 #include <ft_gkrellm.hpp>
-
+/*
 std::ostream & operator << (std::ostream & out, map2s & m) {
 	for (map2s::iterator i = m.begin(); i != m.end(); i++) {
 		out << "[" << i->first << "][" << i->second << "]" << std::endl;
 	}
 	return out;
 }
-
+*/
 int		main( void ) {
-	map2s map;
-	map["FieldName"] = "FieldData";
-	std::cout << map;
+	AMonitorModule	test;
+	(void)test;
 	return (0);
 }

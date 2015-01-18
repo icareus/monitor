@@ -25,6 +25,4 @@ public:
 	virtual void		delModule() = 0;
 };
 
-std::ostream & operator << (std::ostream & out, IMonitorDisplay ID);
-
 #endif
