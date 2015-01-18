@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gkrellm.hpp                                     :+:      :+:    :+:   */
+/*   IMonitorDisplay.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarbaro <abarbaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/18 01:54:56 by abarbaro          #+#    #+#             */
-/*   Updated: 2015/01/18 04:30:58 by abarbaro         ###   ########.fr       */
+/*   Created: 2015/01/18 08:37:59 by abarbaro          #+#    #+#             */
+/*   Updated: 2015/01/18 08:42:43 by abarbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GKRELLM_H
-# define FT_GKRELLM_H
+#ifndef IMONITORDISPLAY_HPP
+# define IMONITORDISPLAY_HPP
 
-# include <map>
-# include <iostream>
-# include <cstring>
+class IMonitorDisplay
+{
+public:
+	virtual ~IMonitorDisplay();
 
-typedef std::map<std::string, std::string> map2s;
+	virtual void		clear();
+	virtual void		close();
+	virtual void		addModule();
+	virtual void		delModule();
+};
 
-std::ostream & operator << (std::ostream & out, const map2s & map);
-
-class IMonitorModule {};
-class IMonitorDisplay {};
-
-# endif
+#endif

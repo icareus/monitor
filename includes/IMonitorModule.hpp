@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gkrellm.hpp                                     :+:      :+:    :+:   */
+/*   IMonitorModule.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarbaro <abarbaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/18 01:54:56 by abarbaro          #+#    #+#             */
-/*   Updated: 2015/01/18 04:30:58 by abarbaro         ###   ########.fr       */
+/*   Created: 2015/01/18 02:57:34 by abarbaro          #+#    #+#             */
+/*   Updated: 2015/01/18 08:44:42 by abarbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GKRELLM_H
-# define FT_GKRELLM_H
+#include <ft_gkrellm.hpp>
 
-# include <map>
-# include <iostream>
-# include <cstring>
+#ifndef IMONITORMODULE_HPP
+# define IMONITORMODULE_HPP
 
-typedef std::map<std::string, std::string> map2s;
+class IMonitorModule
+{
+public:
+	virtual ~IMonitorModule();
 
-std::ostream & operator << (std::ostream & out, const map2s & map);
+	virtual void		start() = 0;
+	virtual void		refresh() = 0;
+	virtual void		stop() = 0;
+	virtual std::string	getName() = 0;
+	virtual map2s &		getData() = 0;
+};
 
-class IMonitorModule {};
-class IMonitorDisplay {};
+std::ostream & operator << (std::ostream & out, IMonitorModule IM);
 
-# endif
+#endif
