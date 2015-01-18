@@ -6,7 +6,7 @@
 
 class AMonitorModule : public IMonitorModule {
 	private:
-		std::string					_name;
+		std::string const			_name;
 		map2s						_map(void);
 
 	protected:
