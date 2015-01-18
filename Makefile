@@ -17,26 +17,28 @@ NAME		=	ft_gkrellm
 DEBUG		=	0
 ifeq ($(DEBUG), 0)
 	CC	=	g++
-	CFLAGS	=	-Wall -Wextra $(INCS_FLAGS) -O3
+	CFLAGS	=	-Wall -Wextra -Werror $(INCS_FLAGS) -O3
 else
 	CC	=	g++
-	CFLAGS	=	-Wall -Wextra -Werror $(INCS_FLAGS) -g3
+	CFLAGS	=	-Wall -Wextra $(INCS_FLAGS) -g3
 endif
 
 DEPENDS		=	
 
 LIBS_DIR	=	
-LIBS		=	
+LIBS		=	-lncurses \
 
-INCS_FLAGS	=	-Iinterfaces \
+INCS_FLAGS	=	-Iclasses \
 			-Iincludes \
-			-Iclasses \
+			-Iinterfaces \
 
 SUB_MAKE	=	
 
 CLASSES_DIR	=	classes
 CLASSES_SRCS	=	$(CLASSES_DIR)/AMonitorModule.cpp \
 			$(CLASSES_DIR)/ModHostname.cpp \
+			$(CLASSES_DIR)/ModOS.cpp \
+			$(CLASSES_DIR)/ModTime.cpp \
 			$(CLASSES_DIR)/MonitorDisplay.cpp \
 
 SRC_DIR	=	src
