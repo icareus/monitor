@@ -14,6 +14,10 @@
 #ifndef IMONITORMODULE_HPP
 # define IMONITORMODULE_HPP
 
+# include <string>
+# include <iostream>
+# include <map>
+
 typedef std::map<std::string, std::string> map2s;
 
 class IMonitorModule

@@ -20,7 +20,7 @@ std::ostream & operator << (std::ostream & out, map2s & m) {
 }
 */
 int		main( void ) {
-ModHostname	test = new ModHostname;
+ModHostname	*test = new ModHostname;
 	(void)test;
 	return (0);
 }
