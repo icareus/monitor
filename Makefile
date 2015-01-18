@@ -19,7 +19,7 @@ ifeq ($(DEBUG), 0)
 	CC	=	g++
 	CFLAGS	=	-Wall -Wextra $(INCS_FLAGS) -O3
 else
-	CC	=	g++
+	CC	=	clang
 	CFLAGS	=	-Wall -Wextra -Werror $(INCS_FLAGS) -g3
 endif
 
