@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gkrellm.hpp                                     :+:      :+:    :+:   */
+/*   ModOS.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarbaro <abarbaro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/18 01:54:56 by abarbaro          #+#    #+#             */
-/*   Updated: 2015/01/18 20:19:50 by abarbaro         ###   ########.fr       */
+/*   Created: 2015/01/18 19:18:02 by abarbaro          #+#    #+#             */
+/*   Updated: 2015/01/18 20:34:36 by abarbaro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_GKRELLM_H
-# define FT_GKRELLM_H
+#ifndef MODOS_HPP
+# define MODOS_HPP
 
-# include <map>
-# include <iostream>
-# include <unistd.h>
+# include <AMonitorModule.hpp>
 
-typedef std::map<std::string, std::string> map2s;
+class ModOS: public AMonitorModule {
+public:
+	ModOS();
+	~ModOS();
 
-#include "ModHostname.hpp"
-#include "ModOS.hpp"
+	void	refresh( void );
 
-# endif
+protected:
+	
+
+private:
+	ModOS(ModOS const &);
+	ModOS & operator = (ModOS const &);
+
+	std::string const	getCmdOut(std::string cmd) const;
+};
+
+#endif

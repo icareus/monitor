@@ -1,7 +1,7 @@
 #ifndef MODHOSTNAME_HPP
 # define MODHOSTNAME_HPP
 
-#include "AMonitorModule.hpp"
+# include "AMonitorModule.hpp"
 
 class ModHostname : public AMonitorModule {
 	private:
